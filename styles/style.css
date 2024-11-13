@@ -64,7 +64,6 @@ ol {
   flex-direction: column;
   justify-content: end; */
 
-  /* flex-direction: row; */
   gap: 16px;
   border: 1px solid red;
   align-self: stretch;
