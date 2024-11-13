@@ -130,6 +130,6 @@ ol {
   border: 1px solid purple;
   width: 194px;
   height: 30px; /*103px;*/
-  object-fit: contain; /* фото встроиться целиком с учетом пропорций */
+  object-fit: contain; /* фото встроиться целиком с сохранением пропорции */
   align-items: end; /* не работает без height*/
 }
