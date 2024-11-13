@@ -18,13 +18,10 @@ html {
   background-color: #1b1919;
   border: 1px solid green;
 
-  /* vvk */
+  /* === vvk === */
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  /* vertical-align: middle; */
-  /* text-align: center; */
 }
 
 h1,
@@ -58,7 +55,7 @@ ol {
   height: 534px;
 }
 
-/* блок с видео и дочерним блоком поиска */
+/* Блок с видео и дочерним блоком поиска */
 .result {
   display: grid;
   grid-template-rows: 1fr 54px;
@@ -74,7 +71,7 @@ ol {
   flex-grow: 1; /* при изменении размеров родителя изменит свой размер */
 }
 
-/* обертка видеофрейма <div> */
+/* Обертка видеофрейма <div> */
 .result__video-container {
   display: flex;
   flex-direction: column;
@@ -82,18 +79,18 @@ ol {
   border: 1px solid indigo;
 }
 
-/* видеофрейм <video> */
+/* Видеофрейм <video> */
 .result__video {
   width: 100%; /* вписываем видео по ширине родителя */
 }
 
-/* блок выбора карточек с заголовком */
+/* Блок выбора карточек с заголовком */
 .content__details {
   /* border: 1px solid yellow; */
   width: 399px;
 }
 
-/* блок поиска */
+/* Блок поиска */
 .search-form {
   display: flex;
   gap: 40px;
@@ -101,12 +98,13 @@ ol {
   border: 1px solid blue;
 }
 
+/* Заголовки полей блока поиска */
 .search-form__fieldset-title {
   font-size: 18px;
   line-height: 1.222;
 }
 
-/* список карточек <ul> */
+/* Лист карточек <ul> */
 .content__list {
   border: 1px solid navy;
   display: flex;
@@ -115,24 +113,23 @@ ol {
   flex-direction: column;
 }
 
-/* карточка с описанием и фото городов <article> */
+/* Карточка с описанием и фото городов <article> */
 .content__video-card {
   display: flex;
   justify-content: right;
 }
 
-/* контейнер описания карточки <div> */
+/* Контейнер описания карточки <div> */
 .content__video-card-description-container {
   border: 1px solid orange;
   width: 100%; /* описание карточки может быть разным по объему текста */
 }
 
-/* фото в карточке <img> */
+/* Фото в карточке <img> */
 .content__video-card-thumbnail {
   border: 1px solid purple;
   width: 194px;
   height: 30px; /*103px;*/
   object-fit: contain; /* фото встроиться целиком с учетом пропорций */
-
   align-items: end; /* не работает без height*/
 }
