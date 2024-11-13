@@ -13,9 +13,18 @@ html {
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  border: 1px solid green;
+
+  /* vvk */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* vertical-align: middle; */
+  /* text-align: center; */
 }
 
 h1,
@@ -35,4 +44,95 @@ fieldset {
 ul,
 ol {
   list-style: none;
+}
+
+/* ========================== vvk========================== */
+
+.content {
+  border: 1px solid brown;
+  display: flex;
+  /* flex-direction: column; */
+  /* justify-content: end; */
+  /* align-items: flex-end; */
+  gap: 30px;
+  height: 534px;
+}
+
+/* блок с видео и дочерним блоком поиска */
+.result {
+  display: grid;
+  grid-template-rows: 1fr 54px;
+
+  /* display: flex;
+  flex-direction: column;
+  justify-content: end; */
+
+  /* flex-direction: row; */
+  gap: 16px;
+  border: 1px solid red;
+  align-self: stretch;
+  flex-grow: 1; /* при изменении размеров родителя изменит свой размер */
+}
+
+/* обертка видеофрейма <div> */
+.result__video-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  border: 1px solid indigo;
+}
+
+/* видеофрейм <video> */
+.result__video {
+  width: 100%; /* вписываем видео по ширине родителя */
+}
+
+/* блок выбора карточек с заголовком */
+.content__details {
+  /* border: 1px solid yellow; */
+  width: 399px;
+}
+
+/* блок поиска */
+.search-form {
+  display: flex;
+  gap: 40px;
+  height: 54px;
+  border: 1px solid blue;
+}
+
+.search-form__fieldset-title {
+  font-size: 18px;
+  line-height: 1.222;
+}
+
+/* список карточек <ul> */
+.content__list {
+  border: 1px solid navy;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-direction: column;
+}
+
+/* карточка с описанием и фото городов <article> */
+.content__video-card {
+  display: flex;
+  justify-content: right;
+}
+
+/* контейнер описания карточки <div> */
+.content__video-card-description-container {
+  border: 1px solid orange;
+  width: 100%; /* описание карточки может быть разным по объему текста */
+}
+
+/* фото в карточке <img> */
+.content__video-card-thumbnail {
+  border: 1px solid purple;
+  width: 194px;
+  height: 30px; /*103px;*/
+  object-fit: contain; /* фото встроиться целиком с учетом пропорций */
+
+  align-items: end; /* не работает без height*/
 }
