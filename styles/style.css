@@ -113,7 +113,7 @@ ol {
   flex-direction: column;
 }
 
-/* Карточка с описанием и фото городов <article> */
+/* Карточка с описанием и фото <article> */
 .content__video-card {
   display: flex;
   justify-content: right;
