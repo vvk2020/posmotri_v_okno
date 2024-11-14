@@ -130,19 +130,21 @@ ol {
   /* font-style: normal; */  
   color: rgba(255, 255, 255, 0.7);
   width: 225px;
-  border-color: #fff;
+  border: 1px solid #fff;
+  /* border-color: #fff; */
   /* border-width: 1px 0px; */
-
   border-left: none;
   border-right: none;
-
-
   background-color: transparent;
 }
 
 .search-form__textfield:active {
-  border-width: 1px;
+  /* border-width: 1px; */
+  border-left: solid;
+  border-right: solid;
   /* border-color: blue; */
+  outline: none;
+  cursor: none;
 }
 
 .search-form__textfield:hover {
