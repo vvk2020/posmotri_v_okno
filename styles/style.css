@@ -103,19 +103,35 @@ ol {
   line-height: 1.222;
 }
 
+/* Скрытый текст полей ввода формы (для скринридеров) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+
 /* Лист карточек <ul> */
 .content__list {
   border: 1px solid navy;
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  flex-direction: column;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* gap: 30px; */
+  /* flex-direction: column; */
+  /* margin-bottom: 30px; */
 }
 
 /* Карточка с описанием и фото <article> */
 .content__video-card {
   display: flex;
   justify-content: right;
+}
+
+.content__list-item:not(:last-of-type) {
+  margin-bottom: 30px; /* gap между карточками и кнопкой (при ее наличии)*/
 }
 
 /* Контейнер описания карточки <div> */
