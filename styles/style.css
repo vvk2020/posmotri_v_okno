@@ -51,8 +51,10 @@ ol {
   /* flex-direction: column; */
   /* justify-content: end; */
   /* align-items: flex-end; */
-  gap: 30px;
+  gap: 30px; /* зазор между .result и .search-form */
   height: 534px;
+  width: 1140px;
+  margin: 0 auto;
 }
 
 /* Блок с видео и дочерним блоком поиска */
@@ -66,7 +68,7 @@ ol {
 
   gap: 16px;
   border: 1px solid red;
-  align-self: stretch;
+  /* align-self: stretch; */
   flex-grow: 1; /* при изменении размеров родителя изменит свой размер */
 }
 
@@ -76,11 +78,13 @@ ol {
   flex-direction: column;
   justify-content: end;
   border: 1px solid indigo;
+  object-fit: contain;
 }
 
 /* Видеофрейм <video> */
 .result__video {
-  width: 100%; /* вписываем видео по ширине родителя */
+  object-fit: contain;
+  width: 100%; /*вписываем видео по ширине родителя */
 }
 
 /* Блок выбора карточек с заголовком */
@@ -95,15 +99,83 @@ ol {
   gap: 40px;
   height: 54px;
   border: 1px solid blue;
+  align-items: end; /* выравнивание по низу */
+}
+
+.search-form__fieldset {
+  border-color: transparent;
+}
+
+.search-form__fieldset {
+  border-color: transparent;
 }
 
 /* Заголовки полей блока поиска */
 .search-form__fieldset-title {
   font-size: 18px;
-  line-height: 1.222;
+  font-weight: 400;
+  margin-bottom: 5px;
 }
 
-/* Скрытый текст полей ввода формы (для скринридеров) */
+/* Поле вывода названия города */
+.search-form__textfield {
+  font-family: "Fira Sans Condensed";
+  font-weight: 400;
+  font-size: 18px;
+  /* line-height: 22px; */
+  color: rgba(255, 255, 255, 0.7);
+  width: 225px;
+  border-color: #fff;
+  border-width: 1px 0px;
+  background-color: transparent;
+}
+
+.search-form__textfield:active {
+  border-width: 1px;
+  /* border-color: blue; */
+}
+
+.search-form__textfield:hover {
+  cursor: text;
+}
+
+.search-form__textfield:focus {
+  outline: 1px solid #fff;
+  /* outline: 1px solid red; */
+  outline-offset: 2px;
+}
+
+/* Кнопки панели поиска (кнопок может быть больше) */
+.result button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+/* Кнопка "Найти" */
+.search-form__submit-button {
+  width: 194px;
+  height: 34px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.search-form__submit-button:active {
+  background: #545050;
+}
+
+.search-form__submit-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.search-form__submit-button:focus {
+  outline: 1px solid #fff;
+  /* outline: 1px solid red; */
+  outline-offset: 2px;
+}
+
+/* Скрытые элементы полей формы (адаптивность, для скринридеров) */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -113,6 +185,22 @@ ol {
   padding: 0;
   overflow: hidden;
   clip: rect(0 0 0 0);
+}
+
+/* Заголовок листа с карточками */
+.title {
+  font-family: "Oswald";
+  /* font-style: normal; */
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 94%;
+  margin-bottom: 26px;
+  text-transform: uppercase;
+}
+
+.content__accent {
+  color: #545050;
+}
 
 /* Лист карточек <ul> */
 .content__list {
