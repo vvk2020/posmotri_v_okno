@@ -88,8 +88,21 @@ ol {
 
 /* Текст карточек  <a> */
 .content__card-link {
+  display: block; /* для активной карточки */
   text-decoration: none;
   color: #fff;
+}
+
+/* активная карточка */
+.content__card-link_current {
+  /* border: 2px solid blue; */
+  background: #545050;
+}
+
+/* active-состояние карточек */
+.content__list-item:has(.content__card-link_current:active) {  
+  /* border: 2px solid blue; */
+  background: #545050;
 }
 
 /* Заголовоки карточек <h2> */
@@ -126,11 +139,19 @@ ol {
 .content__list {
   position: relative; /* для preloder листа карточек */
   height: 298px; /* вертикальный размер */
-  overflow: scroll; /* скролл при переполнении.*/
+  overflow-y: scroll; /* скролл при переполнении.*/
+  overflow-x: hidden;
+
 }
 
 .content__list-item:not(:last-of-type) {
   margin-bottom: 30px; /* gap после карточек*/
+}
+
+/* Кнопка "Показать ещё" */
+.more-button {
+  width: 100%;
+  margin-bottom: 1px; /* для корректной отрисовки border у кнопки */
 }
 
 /************* БЛОК ВЫВОДА РЕЗУЛЬТАТОВ ПОИСКА *************/
@@ -153,7 +174,7 @@ ol {
 
 /************* БЛОК ПОИСКА *************/
 .search-form {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   display: flex; /* в строку */
   justify-content: space-between; /* пропорционально распределить между ними свободное пространство */
   align-items: start; /*прижать их к началу контейнера */
@@ -179,7 +200,127 @@ ol {
   display: flex;
   flex-direction: row; /* выстраивание элементов в линию*/
   width: fit-content; /* ??? НЕ РАБОТАЕТ ??? */
+  /* background-color: aqua; */
 }
+
+
+.search-form__label:has(input[type="text"]) {
+  display: flex;
+  align-items: center;
+  border: 1px solid #fff;
+  /* border-left: none; */
+  border-left-style: none;
+  border-right-style: none;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+/* рамка текстового поля блока поиска в active-состоянии */
+.search-form__label:has(input[type="text"]):active {
+  border-left-style: solid;
+  border-right-style: solid;
+  outline: none;
+}
+
+.search-form__label:hover {
+  cursor: pointer;
+}
+
+/* Поля для ввода текста */
+.search-form__label input[type="text"] {
+  font-family: "Fira Sans Condensed";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.222; /* 22px; */
+  color: rgba(255, 255, 255, 0.7);
+  background-color: transparent;
+  border: none; /* border - у родителя */
+  appearance: none; /* Шаг 5, п. 6 */
+}
+
+/* поле ввода названия города в блоке пооиска */
+.search-form__label input[name="city"] {
+  width: 225px; /* 211px*/
+}
+
+/* undeline текста времени суток при hover по .search-form__label */
+.search-form__label:hover > .search-form__label-text {
+  text-decoration: underline;
+}
+
+/* checkbox'ы в блоке пооиска */
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+}
+
+/* квадрат checkbox'а */
+.search-form__pseudo-checkbox {
+  width: 19px;
+  height: 19px;
+  margin-right: 5px;
+  border: 1px solid #fff;
+}
+
+.search-form__pseudo-checkbox {
+  position: relative; /* для .search-form__pseudo-checkbox::before */
+}
+
+/* Отрисовка квадрата checkbox при его active */
+.search-form__checkbox:active + .search-form__pseudo-checkbox::before {
+  position: absolute;
+  content: "";
+  background-color: #fff;
+  top: 0;
+  inset: 2px; /* отступы от границ search-form__pseudo-checkbox */
+}
+
+/* кнопка "Найти" блока поиска */
+.search-form__submit-button {
+  align-self: end;
+  width: 194px;
+}
+
+.search-form__textfield:focus {
+  outline: none; /* сброс default-обводки при focus */
+}
+
+/************* ОБЩИЕ СТИЛИ КНОПОК *************/
+
+.button {
+  height: 38px;
+  font-family: "Fira Sans Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  /* line-height: 22px; */
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.button:active {
+  background: #545050;
+}
+
+.button:focus {
+  outline: none; /* сброс default-обводки при focus */
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: -2px;
+}
+
+/************* ПРОЧИЕ СТИЛИ *************/
 
 .title {
   margin-bottom: 26px; /* отступ между заголовком и зоной с карточками.*/
