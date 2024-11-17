@@ -253,7 +253,7 @@ ol {
   gap: 15px;
 }
 
-/* Отметка в checkbox'е */
+/* Checkbox в :default */
 .search-form__pseudo-checkbox {
   width: 19px;
   height: 19px;
@@ -261,25 +261,11 @@ ol {
   border: 1px solid #fff;
 }
 
-.search-form__pseudo-checkbox {
-  position: relative; /* для .search-form__pseudo-checkbox::before */
-}
-
-/* Отрисовка квадрата checkbox при его active */
-.search-form__checkbox:active + .search-form__pseudo-checkbox::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  inset: 2px; /* отступы от границ search-form__pseudo-checkbox */
-  background-color: #fff;
-}
-
-/* checkbox в состоянии checked */
-.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  inset: 2px; /* отступы от границ search-form__pseudo-checkbox */
+/* Checkbox в :active и :checked */
+.search-form__checkbox:active + .search-form__pseudo-checkbox,
+.search-form__checkbox:checked + .search-form__pseudo-checkbox {
+  outline: 2px solid #1b1919;
+  outline-offset: -3px;
   background-color: #fff;
 }
 
@@ -290,7 +276,7 @@ ol {
 }
 
 .search-form__textfield:focus {
-  outline: none; /* сброс default-обводки при focus */
+  outline: none;
 }
 
 /************* ОБЩИЕ СТИЛИ КНОПОК *************/
@@ -316,7 +302,7 @@ ol {
 }
 
 .button:focus {
-  outline: none; /* сброс default-обводки при focus */
+  outline: none;
 }
 
 .button:focus-visible {
