@@ -73,14 +73,14 @@ ol {
   color: #545050;
 }
 
-/* Карточка с описанием и фото <article> */
+/* Карточка с описанием и фото */
 .content__video-card {
   display: flex;
   justify-content: space-between;
   align-items: start;
 }
 
-/* Текст карточек  <a> */
+/* Текст карточек */
 .content__card-link {
   display: block;
   margin: 2px;
@@ -115,7 +115,7 @@ ol {
   background: #545050;
 }
 
-/* Заголовоки карточек <h2> */
+/* Заголовоки карточек */
 .content__video-card-title {
   font-family: "Oswald";
   font-weight: 700;
@@ -159,7 +159,7 @@ ol {
 
 /************* БЛОК ВЫВОДА РЕЗУЛЬТАТОВ ПОИСКА *************/
 
-/* Обертка видеофрейма <div> */
+/* Обертка видеофрейма */
 .result__video-container {
   position: relative; /* для preloder видеофрейма */
   width: 711px;
@@ -167,7 +167,7 @@ ol {
   margin-bottom: 18px; /* 16px => Pixel Perfect */
 }
 
-/* Видеофрейм <video> */
+/* Видеофрейм */
 .result__video {
   width: 100%;
   height: 100%;
