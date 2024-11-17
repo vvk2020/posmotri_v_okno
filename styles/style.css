@@ -8,6 +8,10 @@ html {
   --color-light: #fff;
   --color-active: #545050;
   --color-dark: #1b1919;
+  /* размеры фото в списке карточек городов */
+  --thumbnail-width: 194px;
+  --thumbnail-height: 103px;
+
   block-size: 100%;
 }
 
@@ -57,7 +61,7 @@ ol {
   display: grid;
   align-items: end;
   gap: 30px;
-  grid-template: 534px / 711px 399px;
+  grid-template: 534px / 711px 407px;
 }
 
 /************* БЛОК ВИДЕОКАРТОЧЕК *************/
@@ -65,7 +69,7 @@ ol {
 /* Заголовок листа с карточками */
 .title {
   margin-bottom: 21px; /* 26px => Pixel Perfect */
-  font-family: "Oswald";
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 75px;
   line-height: 94%;
@@ -74,13 +78,6 @@ ol {
 
 .content__accent {
   color: var(--color-active);
-}
-
-/* Карточка с описанием и фото */
-.content__video-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
 }
 
 /* Текст карточек */
@@ -118,18 +115,32 @@ ol {
   background: var(--color-active);
 }
 
+/* Карточка с описанием и фото */
+.content__video-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
 /* Заголовоки карточек */
 .content__video-card-title {
-  font-family: "Oswald";
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 30px;
   text-transform: uppercase;
+  /* Обрезанная часть текста заменяется многоточием */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /* Контейнер текстовой части карточки */
 .content__video-card-description-container {
   align-self: stretch;
-  width: 100%;
+  /*width: 100%; /*calc(100%-194px);*/
+  width: calc(100% - var(--thumbnail-width)); */
+  /* flex-grow: 0; */
+  /* flex-shrink: 0; */
 }
 
 /* Текст описания карточки */
@@ -139,16 +150,18 @@ ol {
 
 /* Фото в карточке */
 .content__video-card-thumbnail {
-  width: 194px;
-  height: 103px;
+  width: var(--thumbnail-width); /* width: 194px; */
+  height: var(--thumbnail-height); /* height: 103px; */
   object-fit: cover; /* фото встроиться целиком с сохранением пропорции */
+  object-position: center;
+  /* размеры фото сохраняются при увеличении flex-соседей */
+  flex-shrink: 0;
 }
 
 .content__list {
   position: relative; /* для preloder листа карточек */
   height: 298px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .content__list-item:not(:last-of-type) {
@@ -204,8 +217,8 @@ ol {
   display: flex;
   align-items: center;
   border: 1px solid var(--color-light);
-  border-right-style: none;
-  border-left-style: none;
+  border-left-color: transparent;
+  border-right-color: transparent;
 }
 
 .search-form__label:has(:focus-visible) {
@@ -215,8 +228,8 @@ ol {
 
 /* рамка текстового поля формы поиска в active-состоянии */
 .search-form__label:has(input[type="text"]):active {
-  border-right-style: solid;
-  border-left-style: solid;
+  border-left-color: var(--color-light);
+  border-right-color: var(--color-light);
   outline: none;
 }
 
@@ -228,7 +241,7 @@ ol {
 .search-form__label input[type="text"] {
   border: none; /* border будет у родителя */
   color: rgba(255, 255, 255, 0.7);
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.222; /* или 22px; */
@@ -275,7 +288,7 @@ ol {
 /* Кнопка "Найти" формы поиска */
 .search-form__submit-button {
   align-self: end;
-  width: 194px;
+  min-width: 198px;
 }
 
 .search-form__textfield:focus {
@@ -285,10 +298,10 @@ ol {
 /************* ОБЩИЕ СТИЛИ КНОПОК *************/
 
 .button {
-  height: 34px;
+  min-height: 38px;
   border: 1px solid var(--color-light);
   color: var(--color-light);
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 700;
   font-size: 18px;
   font-style: normal;
@@ -310,7 +323,7 @@ ol {
 
 .button:focus-visible {
   outline: 1px solid var(--color-light);
-  outline-offset: -2px;
+  outline-offset: -3px; /* Pixel Perfect */
 }
 
 /************* ПРОЧИЕ СТИЛИ *************/
