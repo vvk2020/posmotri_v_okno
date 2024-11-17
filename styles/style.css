@@ -9,19 +9,16 @@ html {
 }
 
 .page {
-  inline-size: 1200px;
-  block-size: 100%;
+  display: flex;
+  justify-content: center; /* горизонтальное центрирование .content */
+  align-items: center; /* ветикальное центрирование .content */
   margin: auto;
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
-
-  /* === vvk === */
-  border: 1px solid green;
-  display: flex;
-  justify-content: center; /* горизонтальное центрирование .content */
-  align-items: center; /* ветикальное центрирование .content */
+  inline-size: 1200px;
+  block-size: 100%;
 }
 
 h1,
@@ -45,32 +42,30 @@ ol {
 
 .visually-hidden {
   position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
   clip-path: inset(50%);
   white-space: nowrap;
 }
 
 .content {
-  /* border: 1px solid brown; */
   display: grid;
-  grid-template: 534px / 711px 399px;
-  gap: 30px;
   align-items: end;
+  gap: 30px;
+  grid-template: 534px / 711px 399px;
 }
 
 /************* БЛОК ВИДЕОКАРТОЧЕК *************/
 
 /* Заголовок листа с карточками */
 .title {
+  margin-bottom: 21px; /* 26px => Pixel Perfect */
   font-family: "Oswald";
-  /* font-style: normal; */
   font-weight: 700;
   font-size: 75px;
   line-height: 94%;
-  margin-bottom: 26px;
   text-transform: uppercase;
 }
 
@@ -81,56 +76,66 @@ ol {
 /* Карточка с описанием и фото <article> */
 .content__video-card {
   display: flex;
-  align-items: start; /* ??? Шаг 2, п.4 */
-  /* justify-content: right; */
   justify-content: space-between;
+  align-items: start;
 }
 
 /* Текст карточек  <a> */
 .content__card-link {
-  display: block; /* для активной карточки */
-  text-decoration: none;
+  display: block;
+  margin: 2px;
   color: #fff;
+  text-decoration: none;
 }
 
-/* активная карточка */
-.content__card-link_current {
-  /* border: 2px solid blue; */
+.content__card-link:hover {
+  text-decoration: underline;
+}
+
+.content__card-link:active {
+  text-decoration: none;
   background: #545050;
 }
 
-/* active-состояние карточек */
-.content__list-item:has(.content__card-link_current:active) {  
-  /* border: 2px solid blue; */
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+}
+
+/* Активная карточка */
+.content__card-link_current {
+  background: #545050;
+}
+
+/* Active-состояние карточек */
+.content__list-item:has(.content__card-link_current:active) {
   background: #545050;
 }
 
 /* Заголовоки карточек <h2> */
 .content__video-card-title {
   font-family: "Oswald";
-  /* font-style: normal; */
   font-weight: 700;
   font-size: 30px;
   text-transform: uppercase;
-  /* margin-bottom: 6px; */ /* ??? */
 }
 
 /* Контейнер текстовой части карточки */
 .content__video-card-description-container {
-  width: 100%;
-  /* height: 100%; */
   align-self: stretch;
+  width: 100%;
 }
 
 /* Текст описания карточки */
 .content__video-card-description {
-  /* border: 1px solid orange; */
-  line-height: 90%; /* 16px */
+  line-height: 90%; /* или 16px */
 }
 
-/* Фото в карточке <img> */
+/* Фото в карточке */
 .content__video-card-thumbnail {
-  /* border: 1px solid purple; */
   width: 194px;
   height: 103px;
   object-fit: cover; /* фото встроиться целиком с сохранением пропорции */
@@ -139,9 +144,8 @@ ol {
 .content__list {
   position: relative; /* для preloder листа карточек */
   height: 298px; /* вертикальный размер */
-  overflow-y: scroll; /* скролл при переполнении.*/
   overflow-x: hidden;
-
+  overflow-y: scroll; /* скролл при переполнении */
 }
 
 .content__list-item:not(:last-of-type) {
@@ -151,7 +155,6 @@ ol {
 /* Кнопка "Показать ещё" */
 .more-button {
   width: 100%;
-  margin-bottom: 1px; /* для корректной отрисовки border у кнопки */
 }
 
 /************* БЛОК ВЫВОДА РЕЗУЛЬТАТОВ ПОИСКА *************/
@@ -161,56 +164,45 @@ ol {
   position: relative; /* для preloder видеофрейма */
   width: 711px;
   height: 386px;
-  margin-bottom: 16px;
+  margin-bottom: 18px; /* 16px => Pixel Perfect */
 }
 
 /* Видеофрейм <video> */
 .result__video {
-  object-fit: cover;
-  /* object-position: center; */ /* default value */
-  width: 100%; /*вписываем видео по ширине родителя */
+  width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
-/************* БЛОК ПОИСКА *************/
+/************* ФОРМА ПОИСКА *************/
+
+/* Форма поиска */
 .search-form {
-  /* border: 1px solid blue; */
-  display: flex; /* в строку */
-  justify-content: space-between; /* пропорционально распределить между ними свободное пространство */
-  align-items: start; /*прижать их к началу контейнера */
-  /* height: 100px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
 }
 
-/* Заголовки полей в блоке поиска <h2> */
+/* Заголовки полей в форме поиска */
 .search-form__fieldset-title {
+  margin-bottom: 6px; /* отступ до input: 5px => Pixel Perfect */
   font-weight: 400;
   font-size: 18px;
-  /* line-height: 22px; */ /* auto */
-  margin-bottom: 5px; /* отступ до input */
 }
 
-/* .content__details { */
-/* Растянуть .content__details во всю доступную 
-  ширину и высоту контейнера и добавить  */
-/* width: 100%; */
-/* height: 100%; */
-/* } */
-
+/* Поля формы поиска */
 .search-form__label {
   display: flex;
-  flex-direction: row; /* выстраивание элементов в линию*/
-  width: fit-content; /* ??? НЕ РАБОТАЕТ ??? */
-  /* background-color: aqua; */
+  flex-direction: row; /* элементы поля - в линию */
+  width: fit-content;
 }
-
 
 .search-form__label:has(input[type="text"]) {
   display: flex;
   align-items: center;
   border: 1px solid #fff;
-  /* border-left: none; */
-  border-left-style: none;
   border-right-style: none;
+  border-left-style: none;
 }
 
 .search-form__label:has(:focus-visible) {
@@ -218,10 +210,10 @@ ol {
   outline-offset: 2px;
 }
 
-/* рамка текстового поля блока поиска в active-состоянии */
+/* рамка текстового поля формы поиска в active-состоянии */
 .search-form__label:has(input[type="text"]):active {
-  border-left-style: solid;
   border-right-style: solid;
+  border-left-style: solid;
   outline: none;
 }
 
@@ -231,19 +223,19 @@ ol {
 
 /* Поля для ввода текста */
 .search-form__label input[type="text"] {
-  font-family: "Fira Sans Condensed";
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.222; /* 22px; */
+  border: none; /* border будет у родителя */
   color: rgba(255, 255, 255, 0.7);
+  font-family: "Fira Sans Condensed";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.222; /* или 22px; */
   background-color: transparent;
-  border: none; /* border - у родителя */
-  appearance: none; /* Шаг 5, п. 6 */
+  appearance: none;
 }
 
-/* поле ввода названия города в блоке пооиска */
+/* Поле ввода названия города формы поиска */
 .search-form__label input[name="city"] {
-  width: 225px; /* 211px*/
+  width: 225px;
 }
 
 /* undeline текста времени суток при hover по .search-form__label */
@@ -251,13 +243,17 @@ ol {
   text-decoration: underline;
 }
 
-/* checkbox'ы в блоке пооиска */
+.search-form__label:active > .search-form__label-text {
+  text-decoration: none;
+}
+
+/* Checkbox'ы в формы поиска */
 .search-form__checkbox-list {
   display: flex;
   gap: 15px;
 }
 
-/* квадрат checkbox'а */
+/* Отметка в checkbox'е */
 .search-form__pseudo-checkbox {
   width: 19px;
   height: 19px;
@@ -271,14 +267,23 @@ ol {
 
 /* Отрисовка квадрата checkbox при его active */
 .search-form__checkbox:active + .search-form__pseudo-checkbox::before {
-  position: absolute;
   content: "";
-  background-color: #fff;
+  position: absolute;
   top: 0;
   inset: 2px; /* отступы от границ search-form__pseudo-checkbox */
+  background-color: #fff;
 }
 
-/* кнопка "Найти" блока поиска */
+/* checkbox в состоянии checked */
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset: 2px; /* отступы от границ search-form__pseudo-checkbox */
+  background-color: #fff;
+}
+
+/* Кнопка "Найти" формы поиска */
 .search-form__submit-button {
   align-self: end;
   width: 194px;
@@ -291,15 +296,14 @@ ol {
 /************* ОБЩИЕ СТИЛИ КНОПОК *************/
 
 .button {
-  height: 38px;
-  font-family: "Fira Sans Condensed";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  /* line-height: 22px; */
-  background-color: transparent;
+  height: 34px;
   border: 1px solid #fff;
   color: #fff;
+  font-family: "Fira Sans Condensed";
+  font-weight: 700;
+  font-size: 18px;
+  font-style: normal;
+  background-color: transparent;
 }
 
 .button:hover {
@@ -322,17 +326,6 @@ ol {
 
 /************* ПРОЧИЕ СТИЛИ *************/
 
-.title {
-  margin-bottom: 26px; /* отступ между заголовком и зоной с карточками.*/
-}
-
 fieldset {
-  border: none; /* 0 ??? */
+  border: none;
 }
-
-/* ??? 
-1. Из-за flex у.search-form__label время суток в столбец - разобраться.
-2. Продолжить с п.2 Шага 5.
-  
-
-??? */
