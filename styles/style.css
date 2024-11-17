@@ -5,6 +5,9 @@
 }
 
 html {
+  --color-light: #fff;
+  --color-active: #545050;
+  --color-dark: #1b1919;
   block-size: 100%;
 }
 
@@ -13,10 +16,10 @@ html {
   justify-content: center; /* горизонтальное центрирование .content */
   align-items: center; /* ветикальное центрирование .content */
   margin: auto;
-  color: #fff;
+  color: var(--color-light);
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
-  background-color: #1b1919;
+  background-color: var(--color-dark);
   inline-size: 1200px;
   block-size: 100%;
 }
@@ -70,7 +73,7 @@ ol {
 }
 
 .content__accent {
-  color: #545050;
+  color: var(--color-active);
 }
 
 /* Карточка с описанием и фото */
@@ -84,7 +87,7 @@ ol {
 .content__card-link {
   display: block;
   margin: 2px;
-  color: #fff;
+  color: var(--color-light);
   text-decoration: none;
 }
 
@@ -94,7 +97,7 @@ ol {
 
 .content__card-link:active {
   text-decoration: none;
-  background: #545050;
+  background: var(--color-active);
 }
 
 .content__card-link:focus {
@@ -102,17 +105,17 @@ ol {
 }
 
 .content__card-link:focus-visible {
-  outline: 1px solid #fff;
+  outline: 1px solid var(--color-light);
 }
 
 /* Активная карточка */
 .content__card-link_current {
-  background: #545050;
+  background: var(--color-active);
 }
 
 /* Active-состояние карточек */
 .content__list-item:has(.content__card-link_current:active) {
-  background: #545050;
+  background: var(--color-active);
 }
 
 /* Заголовоки карточек */
@@ -143,9 +146,9 @@ ol {
 
 .content__list {
   position: relative; /* для preloder листа карточек */
-  height: 298px; /* вертикальный размер */
+  height: 298px;
   overflow-x: hidden;
-  overflow-y: scroll; /* скролл при переполнении */
+  overflow-y: auto;
 }
 
 .content__list-item:not(:last-of-type) {
@@ -200,13 +203,13 @@ ol {
 .search-form__label:has(input[type="text"]) {
   display: flex;
   align-items: center;
-  border: 1px solid #fff;
+  border: 1px solid var(--color-light);
   border-right-style: none;
   border-left-style: none;
 }
 
 .search-form__label:has(:focus-visible) {
-  outline: 1px solid #fff;
+  outline: 1px solid var(--color-light);
   outline-offset: 2px;
 }
 
@@ -258,15 +261,15 @@ ol {
   width: 19px;
   height: 19px;
   margin-right: 5px;
-  border: 1px solid #fff;
+  border: 1px solid var(--color-light);
 }
 
 /* Checkbox в :active и :checked */
 .search-form__checkbox:active + .search-form__pseudo-checkbox,
 .search-form__checkbox:checked + .search-form__pseudo-checkbox {
-  outline: 2px solid #1b1919;
+  outline: 2px solid var(--color-dark);
   outline-offset: -3px;
-  background-color: #fff;
+  background-color: var(--color-light);
 }
 
 /* Кнопка "Найти" формы поиска */
@@ -283,8 +286,8 @@ ol {
 
 .button {
   height: 34px;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid var(--color-light);
+  color: var(--color-light);
   font-family: "Fira Sans Condensed";
   font-weight: 700;
   font-size: 18px;
@@ -298,7 +301,7 @@ ol {
 }
 
 .button:active {
-  background: #545050;
+  background: var(--color-active);
 }
 
 .button:focus {
@@ -306,7 +309,7 @@ ol {
 }
 
 .button:focus-visible {
-  outline: 1px solid #fff;
+  outline: 1px solid var(--color-light);
   outline-offset: -2px;
 }
 
