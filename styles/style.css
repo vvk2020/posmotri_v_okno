@@ -8,7 +8,7 @@ html {
   --color-light: #fff;
   --color-active: #545050;
   --color-dark: #1b1919;
-  /* размеры фото в списке карточек городов */
+  /* размеры фото списка карточек городов */
   --thumbnail-width: 194px;
   --thumbnail-height: 103px;
 
@@ -68,7 +68,7 @@ ol {
 
 /* Заголовок листа с карточками */
 .title {
-  margin-bottom: 21px; /* 26px => Pixel Perfect */
+  padding-bottom: 22px; /* Pixel Perfect */
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 75px;
@@ -83,7 +83,8 @@ ol {
 /* Текст карточек */
 .content__card-link {
   display: block;
-  margin: 2px;
+  min-height: 107px;
+  padding: 2px; /* для outline в :focus-visible */
   color: var(--color-light);
   text-decoration: none;
 }
@@ -103,9 +104,10 @@ ol {
 
 .content__card-link:focus-visible {
   outline: 1px solid var(--color-light);
+  outline-offset: -2px;
 }
 
-/* Активная карточка */
+/* Текущая (выбранная) карточка */
 .content__card-link_current {
   background: var(--color-active);
 }
@@ -124,6 +126,8 @@ ol {
 
 /* Заголовоки карточек */
 .content__video-card-title {
+  margin-top: -4px; /* компенсация 2*(padding: 2px) у .content__card-link */
+  overflow: hidden;
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 30px;
@@ -131,16 +135,12 @@ ol {
   /* Обрезанная часть текста заменяется многоточием */
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
 }
 
 /* Контейнер текстовой части карточки */
 .content__video-card-description-container {
   align-self: stretch;
-  /*width: 100%; /*calc(100%-194px);*/
-  width: calc(100% - var(--thumbnail-width)); */
-  /* flex-grow: 0; */
-  /* flex-shrink: 0; */
+  width: calc(100% - var(--thumbnail-width));
 }
 
 /* Текст описания карточки */
@@ -150,12 +150,11 @@ ol {
 
 /* Фото в карточке */
 .content__video-card-thumbnail {
-  width: var(--thumbnail-width); /* width: 194px; */
-  height: var(--thumbnail-height); /* height: 103px; */
-  object-fit: cover; /* фото встроиться целиком с сохранением пропорции */
+  flex-shrink: 0; /* размеры фото сохраняются при увеличении flex-соседей */
+  width: var(--thumbnail-width); /* 194px; */
+  height: var(--thumbnail-height); /* 103px; */
+  object-fit: cover; /* фото без обрезки с сохранением пропорций */
   object-position: center;
-  /* размеры фото сохраняются при увеличении flex-соседей */
-  flex-shrink: 0;
 }
 
 .content__list {
@@ -165,7 +164,7 @@ ol {
 }
 
 .content__list-item:not(:last-of-type) {
-  margin-bottom: 30px; /* gap после карточек*/
+  padding-bottom: 30px; /* gap между карточками*/
 }
 
 /* Кнопка "Показать ещё" */
@@ -180,7 +179,7 @@ ol {
   position: relative; /* для preloder видеофрейма */
   width: 711px;
   height: 386px;
-  margin-bottom: 18px; /* 16px => Pixel Perfect */
+  margin-bottom: 16px;
 }
 
 /* Видеофрейм */
@@ -201,7 +200,7 @@ ol {
 
 /* Заголовки полей в форме поиска */
 .search-form__fieldset-title {
-  margin-bottom: 6px; /* отступ до input: 5px => Pixel Perfect */
+  margin-bottom: 6px; /* отступ до input */
   font-weight: 400;
   font-size: 18px;
 }
@@ -217,8 +216,8 @@ ol {
   display: flex;
   align-items: center;
   border: 1px solid var(--color-light);
-  border-left-color: transparent;
   border-right-color: transparent;
+  border-left-color: transparent;
 }
 
 .search-form__label:has(:focus-visible) {
@@ -228,8 +227,8 @@ ol {
 
 /* рамка текстового поля формы поиска в active-состоянии */
 .search-form__label:has(input[type="text"]):active {
-  border-left-color: var(--color-light);
   border-right-color: var(--color-light);
+  border-left-color: var(--color-light);
   outline: none;
 }
 
@@ -244,7 +243,7 @@ ol {
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.222; /* или 22px; */
+  line-height: 1.222; /* или 22px */
   background-color: transparent;
   appearance: none;
 }
@@ -288,7 +287,7 @@ ol {
 /* Кнопка "Найти" формы поиска */
 .search-form__submit-button {
   align-self: end;
-  min-width: 198px;
+  min-width: 194px;
 }
 
 .search-form__textfield:focus {
@@ -298,7 +297,7 @@ ol {
 /************* ОБЩИЕ СТИЛИ КНОПОК *************/
 
 .button {
-  min-height: 38px;
+  min-height: 34px;
   border: 1px solid var(--color-light);
   color: var(--color-light);
   font-family: "Fira Sans Condensed", sans-serif;
