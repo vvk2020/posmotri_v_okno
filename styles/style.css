@@ -314,6 +314,7 @@ ol {
 
 .button:active {
   background: var(--color-active);
+  text-decoration: none;
 }
 
 .button:focus {
