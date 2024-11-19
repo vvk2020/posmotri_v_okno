@@ -5,6 +5,7 @@
 }
 
 html {
+  /* Стандатные цвета */
   --color-light: #fff;
   --color-active: #545050;
   --color-dark: #1b1919;
@@ -61,7 +62,7 @@ ol {
   display: grid;
   align-items: end;
   gap: 30px;
-  grid-template: 534px / 711px 407px;
+  grid-template: 1fr / 711px 399px;
 }
 
 /************* БЛОК ВИДЕОКАРТОЧЕК *************/
@@ -113,7 +114,7 @@ ol {
 }
 
 /* Active-состояние карточек */
-.content__list-item:has(.content__card-link_current:active) {
+.content__list-item:active {
   background: var(--color-active);
 }
 
@@ -151,8 +152,8 @@ ol {
 /* Фото в карточке */
 .content__video-card-thumbnail {
   flex-shrink: 0; /* размеры фото сохраняются при увеличении flex-соседей */
-  width: var(--thumbnail-width); /* 194px; */
-  height: var(--thumbnail-height); /* 103px; */
+  width: var(--thumbnail-width); /* def 194px; */
+  height: var(--thumbnail-height); /* def 103px; */
   object-fit: cover; /* фото без обрезки с сохранением пропорций */
   object-position: center;
 }
@@ -164,7 +165,7 @@ ol {
 }
 
 .content__list-item:not(:last-of-type) {
-  padding-bottom: 30px; /* gap между карточками*/
+  margin-bottom: 30px; /* gap после карточек */
 }
 
 /* Кнопка "Показать ещё" */
@@ -200,7 +201,7 @@ ol {
 
 /* Заголовки полей в форме поиска */
 .search-form__fieldset-title {
-  margin-bottom: 6px; /* отступ до input */
+  margin-bottom: 7px; /* отступ до input */
   font-weight: 400;
   font-size: 18px;
 }
@@ -313,8 +314,8 @@ ol {
 }
 
 .button:active {
-  background: var(--color-active);
   text-decoration: none;
+  background: var(--color-active);
 }
 
 .button:focus {
