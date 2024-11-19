@@ -113,11 +113,6 @@ ol {
   background: var(--color-active);
 }
 
-/* Active-состояние карточек */
-.content__list-item:active {
-  background: var(--color-active);
-}
-
 /* Карточка с описанием и фото */
 .content__video-card {
   display: flex;
