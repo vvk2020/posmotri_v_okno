@@ -265,7 +265,7 @@ ol {
 }
 
 /* Checkbox в :default */
-.search-form__pseudo-checkbox {
+.search-form__pseudo-checkbox { 
   width: 19px;
   height: 19px;
   margin-right: 5px;
